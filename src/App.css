@@ -1,0 +1,461 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+/* =========================
+   MAIN APP CONTAINER
+========================= */
+
+.app {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Cinematic overlay */
+.app::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,0.05) 0%,
+    rgba(0,0,0,0.4) 70%
+  );
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+.app.cinematic::after {
+  opacity: 1;
+}
+
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.background-hearts {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.heart-wrapper {
+  position: absolute;
+  bottom: -40px;
+  animation: floatUp 14s linear infinite;
+}
+
+.heart {
+  font-size: 18px;
+  opacity: 0.3;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+  padding: 18px 50px;
+  font-size: 22px;
+  border-radius: 40px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.yes-btn {
+  background: #ff4e8a;
+  color: white;
+  box-shadow: 0 0 25px #ff4e8a;
+  margin-top: 40px;
+}
+
+.no-btn {
+  background: white;
+  color: #ff4e8a;
+}
+
+.no-btn.absolute {
+  position: absolute;
+}
+
+.spin-btn,
+.launch-wheel {
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  background: #ff4e8a;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px #ff4e8a;
+}
+
+/* =========================
+   WHEEL SECTION (4 SLICE FIX)
+========================= */
+
+.wheel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.wheel-container {
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 14px solid white;
+  overflow: hidden;
+  box-shadow:
+    0 0 60px rgba(0,0,0,0.3),
+    inset 0 0 60px rgba(0,0,0,0.4);
+}
+
+/* Radial labels */
+.wheel-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+  width: 150px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Winner glow animation */
+.wheel-label.winner {
+  color: gold;
+  animation: winnerBlink 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes winnerBlink {
+  from {
+    text-shadow: 0 0 10px gold;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    text-shadow: 0 0 30px gold;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* Pointer */
+.pointer {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-top: 60px solid white; /* points DOWN */
+  z-index: 20;
+  filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+}
+
+
+
+
+/* =========================
+   COMPATIBILITY GAME
+========================= */
+
+.game-card {
+  background: white;
+  color: #ff4e8a;
+  padding: 40px;
+  border-radius: 20px;
+  width: 350px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+}
+
+.options button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  background: #ff4e8a;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.options button:hover {
+  transform: scale(1.05);
+}
+
+.result {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* =========================
+   CELEBRATION SCREEN
+========================= */
+
+.success {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.heart-container {
+  position: relative;
+  padding: 140px;
+}
+
+.heart-particle {
+  position: absolute;
+  font-size: 14px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.dramatic-text {
+  margin-top: 40px;
+  font-size: 1.5rem;
+  color: white;
+  opacity: 0.9;
+  letter-spacing: 1px;
+}
+
+/* =========================
+   MOUSE TRAIL
+========================= */
+
+.trail-heart {
+  position: fixed;
+  pointer-events: none;
+  font-size: 16px;
+  transform: translate(-50%, -50%);
+}
+
+/* =========================
+   CENTERING SCREENS
+========================= */
+
+.centered,
+.celebration-screen,
+.wheel-screen,
+.game-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.slice-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sliceBlink 0.5s ease-in-out infinite alternate;
+  background: conic-gradient(
+    rgba(255, 215, 0, 0.6) 0deg 90deg,
+    transparent 90deg 360deg
+  );
+}
+
+@keyframes sliceBlink {
+  from {
+    filter: drop-shadow(0 0 10px gold);
+    opacity: 0.7;
+  }
+  to {
+    filter: drop-shadow(0 0 40px gold);
+    opacity: 1;
+  }
+}
+.winner-glow {
+  animation: pulseGlow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  from {
+    box-shadow:
+      0 0 20px gold,
+      0 0 40px gold,
+      inset 0 0 30px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow:
+      0 0 50px gold,
+      0 0 80px gold,
+      inset 0 0 60px rgba(255, 215, 0, 0.8);
+  }
+}
+/* =========================
+   CURTAIN TRANSITION
+========================= */
+
+.game-screen {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, #8b0000, #b22222);
+  z-index: 10;
+}
+
+.curtain-left {
+  left: 0;
+}
+
+.curtain-right {
+  right: 0;
+}
+/* =========================
+   REAL THEATRE CURTAIN
+========================= */
+
+.theatre-curtain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 30% 50%,
+      #b22222 0%,
+      #8b0000 60%,
+      #5a0000 100%
+    );
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Fabric folds */
+.curtain-fold {
+  width: 50%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 0px,
+    rgba(255, 255, 255, 0.05) 8px,
+    transparent 8px,
+    transparent 16px
+  );
+  box-shadow:
+    inset -20px 0 40px rgba(0, 0, 0, 0.5),
+    inset 20px 0 40px rgba(0, 0, 0, 0.5);
+}
+/* =========================
+   CINEMATIC CURTAIN LAYER
+========================= */
+
+.curtain-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 30% 50%,
+      #b22222 0%,
+      #8b0000 60%,
+      #5a0000 100%
+    );
+  z-index: 999;
+}
+/* =========================
+   HEART OUTLINE ANIMATION
+========================= */
+
+.heart-wrapper-container {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-outline {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  animation: heartFloat 2.5s ease-in-out infinite alternate;
+}
+
+.heart-outline.outer {
+  font-size: 22px;
+}
+
+.heart-outline.inner {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+@keyframes heartFloat {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    transform: translate(-50%, -55%) scale(1.2);
+  }
+}
+/* =========================
+   COMPATIBILITY HEADING
+========================= */
+
+.game-heading {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 30px;
+  text-shadow: 0 0 25px rgba(255, 105, 180, 0.7);
+  letter-spacing: 2px;
+}
