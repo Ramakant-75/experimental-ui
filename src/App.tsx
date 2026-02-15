@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 import SpinWheel from "./components/SpinWheel";
 import CompatibilityGame from "./components/CompatibilityGame";
-import CurtainTransition from "./components/CurtainTransition";
 import "./App.css";
 
 type HeartTrail = {
