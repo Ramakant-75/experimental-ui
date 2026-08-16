@@ -28,9 +28,8 @@ import photo2 from "../../photos/photo_2.jpeg";
 import photo3 from "../../photos/photo_3.jpeg";
 import photo4 from "../../photos/photo_4.jpeg";
 import photo5 from "../../photos/photo_5.jpeg";
-import photo6 from "../../photos/photo_6.jpeg";
 
-const resultImages = [photo1, photo2, photo3, photo4, photo5, photo6];
+const resultImages = [photo1, photo2, photo3, photo4, photo5];
 
 export default function CompatibilityGame() {
   const [current, setCurrent] = useState(0);
@@ -114,7 +113,7 @@ export default function CompatibilityGame() {
       </motion.div>
 
       {/* Display Images Around the Edges */}
-      {randomImages.map((img, index) => (
+      {randomImages.slice(0, 4).map((img, index) => (
         <motion.img
           key={index}
           src={img}
@@ -125,6 +124,18 @@ export default function CompatibilityGame() {
           transition={{ delay: index * 0.3, duration: 0.8 }}
         />
       ))}
+
+      {/* Display the 5th Image on Top of the Card */}
+      {randomImages[4] && (
+        <motion.img
+          src={randomImages[4]}
+          alt="Romantic Center"
+          className="center-image"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
+        />
+      )}
     </div>
   );
 }
