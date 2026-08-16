@@ -1,0 +1,72 @@
+/* Game Screen */
+.game-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #fef5f7; /* Light romantic background */
+  }
+  
+  /* Edge Images */
+  .edge-image {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%; /* keeping the circle shape */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.edge-image:hover {
+    transform: scale(1.2);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+  
+  /* Positioning for Each Edge Image */
+  .edge-image-0 {
+    top: 10px;
+    left: 10px;
+    transform: rotate(-10deg);
+  }
+  
+  .edge-image-1 {
+    top: 10px;
+    right: 10px;
+    transform: rotate(10deg);
+  }
+  
+  .edge-image-2 {
+    bottom: 10px;
+    left: 10px;
+    transform: rotate(-5deg);
+  }
+  
+  .edge-image-3 {
+    bottom: 10px;
+    right: 10px;
+    transform: rotate(5deg);
+  }
+  
+  /* Romantic Images Container */
+  .romantic-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    position: relative;
+  }
+  
+  /* Add a subtle gradient background to the container */
+  .romantic-images::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 192, 203, 0.3), rgba(255, 182, 193, 0.5));
+    z-index: -1;
+    border-radius: 20px;
+  }
