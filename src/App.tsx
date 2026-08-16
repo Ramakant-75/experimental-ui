@@ -17,7 +17,9 @@ const firstEmoji = "😭";
 const funnyEmojis = ["😂", "🤣", "😡", "😜", "🤪", "😝", "🤬", "😆", "😈"];
 
 const introMessage =
+
   "Hi Vruchi ❤️, I have something very important to ask you...";
+
 
 function App() {
   const containerRef = useRef<HTMLDivElement | null>(null);
