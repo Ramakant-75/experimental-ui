@@ -27,9 +27,8 @@ import photo1 from "../../photos/photo_1.jpeg";
 import photo2 from "../../photos/photo_2.jpeg";
 import photo3 from "../../photos/photo_3.jpeg";
 import photo4 from "../../photos/photo_4.jpeg";
-import photo5 from "../../photos/photo_5.jpeg";
 
-const resultImages = [photo1, photo2, photo3, photo4, photo5];
+const resultImages = [photo1, photo2, photo3, photo4];
 
 export default function CompatibilityGame() {
   const [current, setCurrent] = useState(0);

@@ -10,18 +10,18 @@
   /* Edge Images */
   .edge-image {
     position: absolute;
-    width: 200px; /* Increased width */
-    height: 200px; /* Increased height */
+    width: 280px;   /* increased from 200px */
+    height: 280px;  /* keep equal to width for a perfect circle */
     object-fit: cover;
-    border-radius: 25px; /* Slightly larger border radius for a smoother look */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Enhanced shadow for better visibility */
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.6s ease, box-shadow 0.6s ease;
-  }
-  
-  .edge-image:hover {
-    transform: scale(1.2); /* Slightly larger scale on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
-  }
+}
+
+.edge-image:hover {
+    transform: scale(1.15); /* slightly reduced from 1.2 so it doesn't overflow as much when already bigger */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
   
   /* Positioning for Each Edge Image */
   .edge-image-0 {
@@ -46,25 +46,6 @@
     bottom: 10px;
     right: 10px;
     transform: rotate(5deg);
-  }
-  
-  /* Center Image (5th Image) */
-  .center-image {
-    position: absolute;
-    top: calc(50% - 400px); /* Adjusted to move the image further up */
-    left: 40%;
-    transform: translate(-50%, -50%); /* Ensures perfect centering both horizontally and vertically */
-    width: 220px; /* Slightly smaller size for better alignment */
-    height: 220px;
-    object-fit: cover;
-    border-radius: 50%; /* Circular image */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
-  }
-  
-  .center-image:hover {
-    transform: translate(-50%, -50%) scale(1.2); /* Adjust hover effect to maintain centering */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
   }
   
   /* Romantic Images Container */
