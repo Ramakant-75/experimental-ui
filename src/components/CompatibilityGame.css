@@ -10,16 +10,16 @@
   /* Edge Images */
   .edge-image {
     position: absolute;
-    width: 280px;   /* increased from 200px */
-    height: 280px;  /* keep equal to width for a perfect circle */
+    width: 200px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 50%; /* keeping the circle shape */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transition: transform 0.6s ease, box-shadow 0.6s ease;
 }
 
 .edge-image:hover {
-    transform: scale(1.15); /* slightly reduced from 1.2 so it doesn't overflow as much when already bigger */
+    transform: scale(1.2);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
   
