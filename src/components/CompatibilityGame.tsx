@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import "./CompatibilityGame.css";
 
+// Questions for the game
 const questions = [
   { question: "Mountains or Beaches?", options: ["🏔 Mountains", "🏖 Beaches"] },
   { question: "Indoor or Outdoor?", options: ["🏠 Indoor", "🌳 Outdoor"] },
@@ -9,7 +11,7 @@ const questions = [
   { question: "45, 18 or 7?", options: ["45", "18", "7"] },
 ];
 
-// 🔥 Rotating Romantic-Funny Lines
+// Romantic-Funny Lines
 const resultLines = [
   "The universe just confirmed it.",
   "Well… looks like you’re stuck with me now 😏",
@@ -20,21 +22,35 @@ const resultLines = [
   "Even Cupid is impressed right now.",
 ];
 
+// Import images from the photos folder
+import photo1 from "../../photos/photo_1.jpeg";
+import photo2 from "../../photos/photo_2.jpeg";
+import photo3 from "../../photos/photo_3.jpeg";
+import photo4 from "../../photos/photo_4.jpeg";
+import photo5 from "../../photos/photo_5.jpeg";
+import photo6 from "../../photos/photo_6.jpeg";
+
+const resultImages = [photo1, photo2, photo3, photo4, photo5, photo6];
+
 export default function CompatibilityGame() {
   const [current, setCurrent] = useState(0);
   const [finished, setFinished] = useState(false);
   const [resultMessage, setResultMessage] = useState("");
+  const [randomImages, setRandomImages] = useState<string[]>([]);
 
   const next = () => {
     if (current < questions.length - 1) {
       setCurrent((prev) => prev + 1);
     } else {
-
       // Pick random romantic line
       const randomLine =
         resultLines[Math.floor(Math.random() * resultLines.length)];
 
+      // Shuffle and pick all images
+      const shuffledImages = [...resultImages].sort(() => Math.random() - 0.5);
+
       setResultMessage(randomLine);
+      setRandomImages(shuffledImages);
       setFinished(true);
     }
   };
@@ -97,21 +113,18 @@ export default function CompatibilityGame() {
         )}
       </motion.div>
 
-      {/* Curtains */}
-      <motion.div
-        className="curtain curtain-left"
-        initial={{ y: 0 }}
-        animate={{ y: "-100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      />
-
-      <motion.div
-        className="curtain curtain-right"
-        initial={{ y: 0 }}
-        animate={{ y: "-100%" }}
-        transition={{ duration: 1, ease: "easeInOut" }}
-      />
-
+      {/* Display Images Around the Edges */}
+      {randomImages.map((img, index) => (
+        <motion.img
+          key={index}
+          src={img}
+          alt={`Romantic ${index}`}
+          className={`edge-image edge-image-${index}`}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: index * 0.3, duration: 0.8 }}
+        />
+      ))}
     </div>
   );
 }
