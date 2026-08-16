@@ -23,7 +23,6 @@ const resultLines = [
 export default function CompatibilityGame() {
   const [current, setCurrent] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [finalScore, setFinalScore] = useState(0);
   const [resultMessage, setResultMessage] = useState("");
 
   const next = () => {
@@ -31,7 +30,6 @@ export default function CompatibilityGame() {
       setCurrent((prev) => prev + 1);
     } else {
       const score = 92 + Math.floor(Math.random() * 8);
-      setFinalScore(score);
 
       // Pick random romantic line
       const randomLine =
