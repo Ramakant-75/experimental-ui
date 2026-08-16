@@ -23,15 +23,12 @@ const resultLines = [
 export default function CompatibilityGame() {
   const [current, setCurrent] = useState(0);
   const [finished, setFinished] = useState(false);
-  const [finalScore, setFinalScore] = useState(0);
   const [resultMessage, setResultMessage] = useState("");
 
   const next = () => {
     if (current < questions.length - 1) {
       setCurrent((prev) => prev + 1);
     } else {
-      const score = 92 + Math.floor(Math.random() * 8);
-      setFinalScore(score);
 
       // Pick random romantic line
       const randomLine =
@@ -85,7 +82,7 @@ export default function CompatibilityGame() {
             transition={{ duration: 0.6 }}
             className="result"
           >
-            <h2>{finalScore}% Compatible 💘</h2>
+            <h2>100% Compatible 💘</h2>
 
             <motion.p
               key={resultMessage}
