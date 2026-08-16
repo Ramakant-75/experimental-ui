@@ -29,7 +29,6 @@ export default function CompatibilityGame() {
     if (current < questions.length - 1) {
       setCurrent((prev) => prev + 1);
     } else {
-      const score = 92 + Math.floor(Math.random() * 8);
 
       // Pick random romantic line
       const randomLine =
